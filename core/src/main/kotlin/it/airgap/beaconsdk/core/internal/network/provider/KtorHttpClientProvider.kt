@@ -1,7 +1,7 @@
 package it.airgap.beaconsdk.core.internal.network.provider
 
 import io.ktor.client.*
-import io.ktor.client.engine.okhttp.*
+import io.ktor.client.engine.cio.*
 import io.ktor.client.features.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
@@ -21,7 +21,7 @@ import kotlinx.serialization.json.JsonElement
 
 internal class KtorHttpClientProvider(private val json: Json, private val beaconScope: BeaconScope) : HttpClientProvider {
     private val ktorClient by lazy {
-        HttpClient(OkHttp) {
+        HttpClient(CIO) {
             install(JsonFeature) {
                 serializer = KotlinxSerializer(json)
             }

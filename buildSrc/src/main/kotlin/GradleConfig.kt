@@ -28,7 +28,7 @@ object Dependencies {
     const val kotlinxSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:${Version.kotlinSerialization}"
     const val kotlinxCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutines}"
 
-    const val ktorOkHttp = "io.ktor:ktor-client-okhttp:${Version.ktor}"
+    const val ktorCIO = "io.ktor:ktor-client-cio:${Version.ktor}"
     const val ktorJson = "io.ktor:ktor-client-json:${Version.ktor}"
     const val ktorSerializationJvm = "io.ktor:ktor-client-serialization-jvm:${Version.ktor}"
     const val ktorLoggingJvm = "io.ktor:ktor-client-logging-jvm:${Version.ktor}"

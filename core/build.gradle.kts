@@ -15,7 +15,7 @@ dependencies {
     implementation(Dependencies.kotlinxCoroutines)
 
     // Ktor
-    implementation(Dependencies.ktorOkHttp)
+    implementation(Dependencies.ktorCIO)
     implementation(Dependencies.ktorJson)
     implementation(Dependencies.ktorSerializationJvm)
     implementation(Dependencies.ktorLoggingJvm)
