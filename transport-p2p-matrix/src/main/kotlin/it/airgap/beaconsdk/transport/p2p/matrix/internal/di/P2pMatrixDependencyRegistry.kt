@@ -1,7 +1,6 @@
 package it.airgap.beaconsdk.transport.p2p.matrix.internal.di
 
 import it.airgap.beaconsdk.core.internal.di.DependencyRegistry
-import it.airgap.beaconsdk.core.internal.migration.Migration
 import it.airgap.beaconsdk.core.internal.network.HttpClient
 import it.airgap.beaconsdk.core.internal.utils.app
 import it.airgap.beaconsdk.core.internal.utils.delegate.lazyWeak
@@ -15,7 +14,6 @@ import it.airgap.beaconsdk.transport.p2p.matrix.internal.matrix.network.node.Mat
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.matrix.network.room.MatrixRoomService
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.matrix.network.user.MatrixUserService
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.matrix.store.MatrixStore
-import it.airgap.beaconsdk.transport.p2p.matrix.internal.migration.v1_0_4.P2pMatrixMigrationFromV1_0_4
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.store.P2pMatrixStore
 import it.airgap.beaconsdk.transport.p2p.matrix.storage.P2pMatrixStoragePlugin
 
@@ -55,14 +53,4 @@ internal class P2pMatrixDependencyRegistry(dependencyRegistry: DependencyRegistr
                 poller,
             )
         }
-
-    // -- migration --
-
-    override val migration: Migration by lazyWeak {
-        dependencyRegistry.migration.apply {
-            register(
-                P2pMatrixMigrationFromV1_0_4(storageManager)
-            )
-        }
-    }
 }

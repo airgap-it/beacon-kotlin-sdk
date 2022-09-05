@@ -10,7 +10,6 @@ import it.airgap.beaconsdk.core.internal.utils.*
 import it.airgap.beaconsdk.core.storage.findPeer
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.P2pMatrixCommunicator
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.matrix.MatrixClient
-import it.airgap.beaconsdk.transport.p2p.matrix.internal.migration.migrateMatrixRelayServer
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.storage.*
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -129,8 +128,6 @@ internal class P2pMatrixStore(
 
     private suspend fun relayServer(): Result<String> =
         runCatching runCatching@ {
-            migration.migrateMatrixRelayServer(matrixNodes)
-
             logDebug(TAG, "Looking for a Matrix relay server...")
 
             val savedRelayServer = storageManager.getMatrixRelayServer()

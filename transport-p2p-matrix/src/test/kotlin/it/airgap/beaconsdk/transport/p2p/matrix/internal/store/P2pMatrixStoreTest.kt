@@ -15,17 +15,19 @@ import it.airgap.beaconsdk.core.internal.utils.success
 import it.airgap.beaconsdk.core.scope.BeaconScope
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.P2pMatrixCommunicator
 import it.airgap.beaconsdk.transport.p2p.matrix.internal.matrix.MatrixClient
-import it.airgap.beaconsdk.transport.p2p.matrix.internal.migration.migrateMatrixRelayServer
-import it.airgap.beaconsdk.transport.p2p.matrix.internal.storage.*
+import it.airgap.beaconsdk.transport.p2p.matrix.internal.storage.getMatrixChannels
+import it.airgap.beaconsdk.transport.p2p.matrix.internal.storage.getMatrixRelayServer
+import it.airgap.beaconsdk.transport.p2p.matrix.internal.storage.setMatrixChannels
+import it.airgap.beaconsdk.transport.p2p.matrix.internal.storage.setMatrixRelayServer
 import kotlinx.coroutines.test.runBlockingTest
 import mock.mockLog
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
 import mock.p2pPeers
 import mock.storage.MockP2pMatrixStoragePlugin
 import mock.storage.MockSecureStorage
 import mock.storage.MockStorage
+import org.junit.After
+import org.junit.Before
+import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
@@ -102,7 +104,6 @@ internal class P2pMatrixStoreTest {
                 ),
                 p2pStore.state().getOrThrow(),
             )
-            coVerify(exactly = 1) { migration.migrateMatrixRelayServer(matrixNodes) }
         }
     }
 
