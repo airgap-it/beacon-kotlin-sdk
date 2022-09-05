@@ -1,6 +1,6 @@
 object Project {
     const val group = "it.airgap.beaconsdk"
-    const val version = "3.0.0"
+    const val version = "3.0.0-beta01"
 }
 
 object Version {
