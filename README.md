@@ -55,8 +55,6 @@ To add `Beacon Kotlin SDK` into your project:
 
     // optional, client-wallet
     implementation "com.github.airgap-it.beacon-kotlin-sdk:client-wallet:$beacon_version"
-    // optional, client-wallet-compat
-    implementation "com.github.airgap-it.beacon-kotlin-sdk:client-wallet-compat:$beacon_version"
 
     // optional, blockchain-substrate
     implementation "com.github.airgap-it.beacon-kotlin-sdk:blockchain-substrate:$beacon_version"
@@ -86,8 +84,6 @@ To add `Beacon Kotlin SDK` into your project:
 
     // optional, client-wallet
     implementation("com.github.airgap-it.beacon-kotlin-sdk:client-wallet:$beaconVersion")
-    // optional, client-wallet-compat
-    implementation("com.github.airgap-it.beacon-kotlin-sdk:client-wallet-compat:$beaconVersion")
 
     // optional, blockchain-substrate
     implementation("com.github.airgap-it.beacon-kotlin-sdk:blockchain-substrate:$beaconVersion")
