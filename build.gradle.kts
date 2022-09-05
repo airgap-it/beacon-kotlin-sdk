@@ -41,7 +41,7 @@ subprojects {
             create<MavenPublication>("maven") {
                 from(components.getByName("java"))
 
-                artifactId = name
+                artifactId = this@subprojects.name
             }
         }
     }
