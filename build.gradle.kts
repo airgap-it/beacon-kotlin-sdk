@@ -10,6 +10,18 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    tasks.register<Jar>("fatJar") {
+        archiveClassifier.set("fat")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+        from(sourceSets.main.get().output)
+
+        dependsOn(configurations.runtimeClasspath)
+        from({
+            configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+        })
+    }
 }
 
 subprojects {
@@ -36,6 +48,10 @@ subprojects {
         }
     }
 
+    tasks.assemble {
+        dependsOn("fatJar")
+    }
+
     publishing {
         publications {
             create<MavenPublication>("maven") {
@@ -47,6 +63,19 @@ subprojects {
     }
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.assemble {
+    dependsOn("fatJar")
+}
+
 dependencies {
+    subprojects.forEach {
+        implementation(project(it.path))
+    }
+
     testImplementation(kotlin("test"))
 }
